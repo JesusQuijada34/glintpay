@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoBank Simulator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <div class="particles" id="particles-js"></div>
+    
+    <div class="container">
+        <header class="header animate__animated animate__fadeInDown">
+            <div class="logo">
+                <span class="logo-icon">₿</span>
+                <h1>Neo<span>Bank</span></h1>
+            </div>
+            <div class="balance-display">
+                <span class="balance-label">Balance:</span>
+                <span class="balance-amount" id="balance">$5,000.00</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="card-section animate__animated animate__fadeInLeft">
+                <div class="bank-card" id="bankCard">
+                    <div class="card-chip"></div>
+                    <div class="card-number">•••• •••• •••• 4242</div>
+                    <div class="card-info">
+                        <div class="card-holder">JUAN PEREZ</div>
+                        <div class="card-expiry">09/25</div>
+                    </div>
+                    <div class="card-logo">VISA</div>
+                    <div class="card-gradient"></div>
+                </div>
+            </section>
+
+            <section class="transaction-section animate__animated animate__fadeInRight">
+                <div class="transaction-form">
+                    <h2 class="section-title">Realizar Compra</h2>
+                    
+                    <div class="form-group">
+                        <label for="amount">Monto</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="amount" class="glow-input" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="merchant">Comercio</label>
+                        <select id="merchant" class="glow-input">
+                            <option value="">Seleccionar comercio...</option>
+                            <option value="amazon">Amazon</option>
+                            <option value="apple">Apple Store</option>
+                            <option value="netflix">Netflix</option>
+                            <option value="spotify">Spotify</option>
+                            <option value="uber">Uber Eats</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Categoría</label>
+                        <div class="category-buttons">
+                            <button class="category-btn" data-category="food">🍔 Comida</button>
+                            <button class="category-btn" data-category="entertainment">🎬 Entretenimiento</button>
+                            <button class="category-btn" data-category="shopping">🛍️ Compras</button>
+                            <button class="category-btn" data-category="services">🔧 Servicios</button>
+                        </div>
+                        <input type="hidden" id="category">
+                    </div>
+                    
+                    <button id="submitBtn" class="neon-button">
+                        <span class="neon-text">Confirmar Pago</span>
+                        <span class="neon-border"></span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <section class="transaction-history animate__animated animate__fadeInUp">
+            <h2 class="section-title">Historial de Transacciones</h2>
+            <div class="transactions-list" id="transactionsList">
+                <!-- Las transacciones aparecerán aquí -->
+                <div class="transaction-item template">
+                    <div class="transaction-icon"></div>
+                    <div class="transaction-details">
+                        <div class="transaction-merchant"></div>
+                        <div class="transaction-date"></div>
+                    </div>
+                    <div class="transaction-amount"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon success">✓</div>
+            <h3>¡Pago Exitoso!</h3>
+            <p id="successMessage">Tu transacción se ha completado correctamente.</p>
+            <button class="neon-button small" id="closeModalBtn">Aceptar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="errorModal">
+        <div class="modal-content">
+            <div class="modal-icon error">✕</div>
+            <h3>Error en el Pago</h3>
+            <p id="errorMessage">No se pudo completar la transacción.</p>
+            <button class="neon-button small" id="closeErrorModalBtn">Entendido</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
