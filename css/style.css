@@ -1,135 +1,412 @@
-/* Fondo animado */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+    --neon-blue: #08f;
+    --neon-pink: #f0f;
+    --neon-purple: #90f;
+    --neon-green: #0f8;
+    --neon-yellow: #ff0;
+    --dark-bg: #111;
+    --darker-bg: #0a0a0a;
+    --card-bg: rgba(20, 20, 30, 0.8);
+    --text-color: #eee;
+    --error-color: #f44336;
+    --success-color: #4caf50;
+    --warning-color: #ff9800;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(-45deg, #002f4b, #005f6b, #007c91, #00bcd4);
-  background-size: 600% 600%;
-  animation: fondo 15s ease infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    line-height: 1.6;
 }
 
-/* Animación del fondo */
-@keyframes fondo {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Contenedor principal */
 .container {
-  background-color: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 400px;
-  color: white;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  animation: entradaSuave 0.8s ease;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-/* Efecto de entrada */
-@keyframes entradaSuave {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+.header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* Título */
-.container h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 28px;
-  letter-spacing: 1px;
+.neon-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 
+        0 0 5px var(--neon-blue),
+        0 0 10px var(--neon-blue),
+        0 0 20px var(--neon-blue),
+        0 0 40px var(--neon-purple);
+    margin-bottom: 10px;
+    letter-spacing: 3px;
 }
 
-/* Inputs y selects */
-input, select {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 2px solid #00bcd4;
-  border-radius: 8px;
-  background: transparent;
-  color: #ffffff;
-  font-size: 16px;
-  transition: all 0.3s ease;
+.neon-text-small {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 
+        0 0 2px var(--neon-blue),
+        0 0 5px var(--neon-blue);
+    margin-bottom: 15px;
 }
 
-input:focus, select:focus {
-  border-color: #ffffff;
-  box-shadow: 0 0 10px #00ffff;
-  outline: none;
+.flicker {
+    animation: flicker 3s infinite alternate;
 }
 
-/* Botón de envío */
-button {
-  position: relative;
-  width: 100%;
-  padding: 14px;
-  margin-top: 20px;
-  background-color: #00bcd4;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: background 0.3s ease;
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 5px var(--neon-blue),
+            0 0 10px var(--neon-blue),
+            0 0 20px var(--neon-blue),
+            0 0 40px var(--neon-purple);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
 }
 
-button:hover {
-  background-color: #0097a7;
+.subtitle {
+    font-size: 1rem;
+    color: var(--neon-green);
+    letter-spacing: 2px;
 }
 
-/* Efecto ripple en botón */
-button::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 100%;
-  width: 0;
-  background: rgba(255, 255, 255, 0.3);
-  transition: width 0.5s ease;
-  z-index: 0;
+.card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 
+        0 0 10px rgba(0, 136, 255, 0.3),
+        0 0 20px rgba(0, 68, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 204, 255, 0.1);
+    margin-bottom: 20px;
 }
 
-button:hover::after {
-  width: 120%;
+.glow {
+    animation: glow 3s ease-in-out infinite alternate;
 }
 
-/* Detección del sistema */
-#os-info {
-  text-align: center;
-  font-size: 14px;
-  margin-top: 15px;
-  color: #aefaff;
+@keyframes glow {
+    from {
+        box-shadow: 
+            0 0 5px rgba(0, 136, 255, 0.3),
+            0 0 10px rgba(0, 68, 255, 0.2);
+    }
+    to {
+        box-shadow: 
+            0 0 10px rgba(0, 136, 255, 0.5),
+            0 0 20px rgba(0, 68, 255, 0.3),
+            0 0 30px rgba(0, 34, 255, 0.2);
+    }
 }
 
-/* Alerta de transacción */
-.alerta {
-  position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-size: 16px;
-  color: #00ffff;
-  background: rgba(0, 0, 0, 0.85);
-  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
-  z-index: 9999;
-  animation: deslizar 0.4s ease;
+.form-group {
+    margin-bottom: 25px;
 }
 
-/* Animación de aparición de alerta */
-@keyframes deslizar {
-  0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-  100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+.neon-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--neon-green);
+    text-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
+    letter-spacing: 1px;
+}
+
+.neon-input {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(10, 20, 30, 0.7);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 16px;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(0, 136, 255, 0.1);
+}
+
+.neon-input:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 
+        0 0 10px rgba(0, 136, 255, 0.3),
+        0 0 20px rgba(0, 68, 255, 0.2);
+}
+
+.radio-group {
+    margin-bottom: 25px;
+}
+
+.radio-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.radio-neon {
+    flex: 1;
+    position: relative;
+}
+
+.radio-neon input {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio-neon span {
+    display: block;
+    padding: 12px 15px;
+    background: rgba(10, 20, 30, 0.7);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text-color);
+    box-shadow: 0 0 10px rgba(0, 136, 255, 0.1);
+}
+
+.radio-neon input:checked + span {
+    background: rgba(0, 68, 255, 0.2);
+    border-color: var(--neon-blue);
+    color: var(--neon-green);
+    box-shadow: 
+        0 0 10px rgba(0, 136, 255, 0.3),
+        0 0 20px rgba(0, 68, 255, 0.2);
+    text-shadow: 0 0 5px rgba(0, 255, 170, 0.5);
+}
+
+.neon-button {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 
+        0 0 10px rgba(0, 136, 255, 0.5),
+        0 0 20px rgba(0, 68, 255, 0.3);
+    margin-top: 10px;
+}
+
+.neon-button.small {
+    padding: 10px 15px;
+    font-size: 14px;
+    max-width: 150px;
+    margin: 20px auto 0;
+}
+
+.neon-button .btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.neon-button .btn-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+    );
+    transform: rotate(30deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.neon-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 0 15px rgba(0, 136, 255, 0.7),
+        0 0 30px rgba(0, 68, 255, 0.5);
+}
+
+.neon-button:hover .btn-glow {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(30deg) translate(-10%, -10%);
+    }
+    100% {
+        transform: rotate(30deg) translate(10%, 10%);
+    }
+}
+
+.loader {
+    text-align: center;
+    margin: 30px 0;
+    display: none;
+}
+
+.loader.hidden {
+    display: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 204, 255, 0.2);
+    border-top-color: var(--neon-blue);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
+    font-size: 14px;
+}
+
+.result-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.result-container.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.result-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 
+        0 0 20px rgba(0, 136, 255, 0.5),
+        0 0 40px rgba(0, 68, 255, 0.3);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    text-align: center;
+    position: relative;
+    animation: fadeInUp 0.5s;
+}
+
+.result-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.result-message {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.product-info {
+    background: rgba(10, 20, 30, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 204, 255, 0.2);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(0, 204, 255, 0.2);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-value {
+    color: var(--neon-green);
+    text-align: right;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--neon-yellow) !important;
+    text-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+}
+
+.success {
+    color: var(--success-color);
+    text-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.error {
+    color: var(--error-color);
+    text-shadow: 0 0 5px rgba(244, 67, 54, 0.3);
+}
+
+.warning {
+    color: var(--warning-color);
+    text-shadow: 0 0 5px rgba(255, 152, 0, 0.3);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hidden {
+    display: none;
 }
