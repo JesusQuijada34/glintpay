@@ -1,393 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador Bancario</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --success: #27ae60;
-            --danger: #e74c3c;
-            --warning: #f39c12;
-            --light: #ecf0f1;
-            --dark: #34495e;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        h1 {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border 0.3s;
-        }
-        
-        input:focus, select:focus {
-            border-color: var(--secondary);
-            outline: none;
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-        }
-        
-        button {
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: #2980b9;
-        }
-        
-        .result-container {
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .success {
-            background-color: rgba(39, 174, 96, 0.1);
-            border-left: 5px solid var(--success);
-            color: var(--success);
-        }
-        
-        .error {
-            background-color: rgba(231, 76, 60, 0.1);
-            border-left: 5px solid var(--danger);
-            color: var(--danger);
-        }
-        
-        .warning {
-            background-color: rgba(243, 156, 18, 0.1);
-            border-left: 5px solid var(--warning);
-            color: var(--warning);
-        }
-        
-        .product-info {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            border-left: 5px solid var(--secondary);
-        }
-        
-        .product-info h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .product-info p {
-            margin-bottom: 8px;
-        }
-        
-        .product-info span {
-            font-weight: 600;
-        }
-        
-        .loader {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--secondary);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-            display: none;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .account-type {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .account-option {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .account-option input {
-            display: none;
-        }
-        
-        .account-option label {
-            display: block;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .account-option input:checked + label {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        .nationality {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .nationality-option {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .nationality-option input {
-            display: none;
-        }
-        
-        .nationality-option label {
-            display: block;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .nationality-option input:checked + label {
-            background-color: var(--secondary);
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulador Bancario</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Simulador Bancario</h1>
-        
-        <form id="bankForm">
-            <div class="form-group">
-                <label for="idNumber">Cédula de Identidad</label>
-                <input type="text" id="idNumber" placeholder="Ej: V-12345678" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Clave de Acceso</label>
-                <input type="password" id="password" placeholder="Ingresa tu clave" required>
-            </div>
-            
-            <div class="account-type">
-                <div class="account-option">
-                    <input type="radio" id="savings" name="accountType" value="ahorro" checked>
-                    <label for="savings">Cuenta Ahorro</label>
-                </div>
-                <div class="account-option">
-                    <input type="radio" id="current" name="accountType" value="corriente">
-                    <label for="current">Cuenta Corriente</label>
-                </div>
-            </div>
-            
-            <div class="nationality">
-                <div class="nationality-option">
-                    <input type="radio" id="venezuelan" name="nationality" value="venezolano" checked>
-                    <label for="venezuelan">Venezolano</label>
-                </div>
-                <div class="nationality-option">
-                    <input type="radio" id="foreign" name="nationality" value="extranjero">
-                    <label for="foreign">Extranjero</label>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="productId">ID del Producto (Amazon)</label>
-                <input type="text" id="productId" placeholder="Ej: B08N5KWB9H" required>
-            </div>
-            
-            <button type="button" id="submitBtn">Realizar Transacción</button>
-        </form>
-        
-        <div class="loader" id="loader"></div>
-        
-        <div class="result-container" id="resultContainer">
-            <h2 id="resultTitle">Resultado</h2>
-            <p id="resultMessage"></p>
-            
-            <div class="product-info" id="productInfo">
-                <h3>Información del Producto</h3>
-                <p><span>Nombre:</span> <span id="productName"></span></p>
-                <p><span>Precio:</span> <span id="productPrice"></span></p>
-                <p><span>Tipo de Cuenta:</span> <span id="accountTypeDisplay"></span></p>
-                <p><span>Nacionalidad:</span> <span id="nationalityDisplay"></span></p>
-            </div>
-        </div>
-    </div>
+  <h1>🏦 Banco Prisma – Simulación de Compra</h1>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const submitBtn = document.getElementById('submitBtn');
-            const loader = document.getElementById('loader');
-            const resultContainer = document.getElementById('resultContainer');
-            const resultTitle = document.getElementById('resultTitle');
-            const resultMessage = document.getElementById('resultMessage');
-            const productName = document.getElementById('productName');
-            const productPrice = document.getElementById('productPrice');
-            const accountTypeDisplay = document.getElementById('accountTypeDisplay');
-            const nationalityDisplay = document.getElementById('nationalityDisplay');
-            
-            // Simulación de productos de Amazon (en un caso real, usarías la API de Amazon)
-            const amazonProducts = {
-                "B08N5KWB9H": {
-                    name: "Echo Dot (4ª generación) | Altavoz inteligente con Alexa | Antracita",
-                    price: 39.99
-                },
-                "B07XKF5RMZ": {
-                    name: "Fire TV Stick con mando por voz Alexa (incluye controles del TV) | Reproductor multimedia para streaming HD",
-                    price: 29.99
-                },
-                "B08KTZ8249": {
-                    name: "Kindle Paperwhite | Ahora resistente al agua y con el doble de almacenamiento | Negro",
-                    price: 119.99
-                },
-                "B07PGL2M5K": {
-                    name: "Apple AirPods con estuche de carga",
-                    price: 129.00
-                },
-                "B08BX7FV5L": {
-                    name: "Samsung Galaxy S21 5G | Teléfono inteligente Android desbloqueado | 128GB | Phantom Gray (Gris fantasma)",
-                    price: 699.99
-                }
-            };
-            
-            submitBtn.addEventListener('click', function() {
-                // Mostrar loader
-                loader.style.display = 'block';
-                resultContainer.style.display = 'none';
-                
-                // Obtener valores del formulario
-                const idNumber = document.getElementById('idNumber').value;
-                const password = document.getElementById('password').value;
-                const productId = document.getElementById('productId').value.toUpperCase();
-                const accountType = document.querySelector('input[name="accountType"]:checked').value;
-                const nationality = document.querySelector('input[name="nationality"]:checked').value;
-                
-                // Validaciones básicas
-                if (!idNumber || !password || !productId) {
-                    showError('Por favor complete todos los campos');
-                    return;
-                }
-                
-                // Simular tiempo de búsqueda
-                setTimeout(() => {
-                    // Ocultar loader
-                    loader.style.display = 'none';
-                    
-                    // Buscar producto
-                    const product = amazonProducts[productId];
-                    
-                    if (!product) {
-                        showError('Producto no encontrado en Amazon. Verifique el ID.');
-                        return;
-                    }
-                    
-                    // Mostrar información del producto
-                    productName.textContent = product.name;
-                    productPrice.textContent = $${product.price.toFixed(2)};
-                    accountTypeDisplay.textContent = accountType === 'ahorro' ? 'Ahorro' : 'Corriente';
-                    nationalityDisplay.textContent = nationality === 'venezolano' ? 'Venezolano' : 'Extranjero';
-                    
-                    // Simular resultado aleatorio de transacción
-                    const randomResult = Math.floor(Math.random() * 5);
-                    
-                    switch(randomResult) {
-                        case 0:
-                            showSuccess('Transacción exitosa. El pago ha sido procesado correctamente.');
-                            break;
-                        case 1:
-                            showError('Clave errada. Por favor verifique sus credenciales.');
-                            break;
-                        case 2:
-                            showError('Cuenta bloqueada. Contacte al servicio al cliente.');
-                            break;
-                        case 3:
-                            showError('Fondos insuficientes. No se pudo completar la transacción.');
-                            break;
-                        case 4:
-                            showError('Transacción fallida. Error en el procesamiento del pago.');
-                            break;
-                    }
-                }, 2000);
-            });
-            
-            function showSuccess(message) {
-                resultContainer.className = 'result-container success';
-                resultTitle.textContent = '¡Éxito!';
-                resultMessage.textContent = message;
-                resultContainer.style.display = 'block';
-            }
-            
-            function showError(message) {
-                resultContainer.className = 'result-container error';
-                resultTitle.textContent = 'Error';
-                resultMessage.textContent = message;
-                resultContainer.style.display = 'block';
-                
-                // Ocultar información del producto si hay error
-                document.getElementById('productInfo').style.display = 'none';
-            }
-            
-            function showWarning(message) {
-                resultContainer.className = 'result-container warning';
-                resultTitle.textContent = 'Advertencia';
-                resultMessage.textContent = message;
-                resultContainer.style.display = 'block';
-            }
-        });
-    </script>
+  <div class="banco-card">
+    <label for="cedula">Cédula de identidad</label>
+    <input type="text" id="cedula" placeholder="Ej. V12345678">
+
+    <label for="clave">Clave de acceso</label>
+    <input type="password" id="clave" placeholder="••••••">
+
+    <label for="nacionalidad">Tipo de usuario</label>
+    <select id="nacionalidad">
+      <option value="venezolano">Venezolano</option>
+      <option value="extranjero">Extranjero</option>
+    </select>
+
+    <label for="cuenta">Tipo de cuenta</label>
+    <select id="cuenta">
+      <option value="ahorro">Cuenta de Ahorro</option>
+      <option value="corriente">Cuenta Corriente</option>
+    </select>
+
+    <label for="productoID">ID del producto (Amazon)</label>
+    <input type="text" id="productoID" placeholder="Ej: B07PGL2ZSL">
+
+    <label for="monto">Monto a pagar ($)</label>
+    <input type="number" id="monto" placeholder="100.00">
+
+    <button onclick="procesarPago()">💸 Procesar Transacción</button>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script src="js/script.js" defer></script>
 </body>
 </html>
