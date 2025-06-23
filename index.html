@@ -1,28 +1,108 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GlintPay</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlintPay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>GlintPay</h1>
-    <form id="formulario">
-      <input type="number" placeholder="Cédula de Identidad" required />
-      <input type="password" placeholder="Clave" required />
-      <select required>
-        <option value="">Tipo de Cuenta</option>
-        <option value="ahorro">Ahorro</option>
-        <option value="corriente">Corriente</option>
-      </select>
-      <input type="number" placeholder />
-      <input type="number" placeholder="ID de Producto" required />
-      <button type="submit">Consultar</button>
-    </form>
-    <p id="os-info"></p>
-  </div>
-  <script src="js/script.js"></script>
+    <div class="container">
+        <div class="header">
+            <h1 class="neon-text">Glint<span class="flicker">Pay</span></h1>
+            <p class="subtitle">Simulador de Transacciones Bancarias</p>
+        </div>
+
+        <div class="card glow">
+            <form id="bankForm">
+                <div class="form-group">
+                    <label for="idNumber" class="neon-label">Cédula de Identidad</label>
+                    <input type="text" id="idNumber" class="neon-input" placeholder="V-12345678" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="neon-label">Clave de Acceso</label>
+                    <input type="password" id="password" class="neon-input" placeholder="••••••••" required>
+                </div>
+
+                <div class="radio-group">
+                    <p class="neon-label">Tipo de Cuenta:</p>
+                    <div class="radio-options">
+                        <label class="radio-neon">
+                            <input type="radio" name="accountType" value="ahorro" checked>
+                            <span>Ahorro</span>
+                        </label>
+                        <label class="radio-neon">
+                            <input type="radio" name="accountType" value="corriente">
+                            <span>Corriente</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="radio-group">
+                    <p class="neon-label">Nacionalidad:</p>
+                    <div class="radio-options">
+                        <label class="radio-neon">
+                            <input type="radio" name="nationality" value="venezolano" checked>
+                            <span>Venezolano</span>
+                        </label>
+                        <label class="radio-neon">
+                            <input type="radio" name="nationality" value="extranjero">
+                            <span>Extranjero</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productId" class="neon-label">ID del Producto (Amazon)</label>
+                    <input type="text" id="productId" class="neon-input" placeholder="Ej: B08N5KWB9H" required>
+                </div>
+
+                <button type="button" id="submitBtn" class="neon-button">
+                    <span class="btn-text">PROCESAR TRANSACCIÓN</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </form>
+        </div>
+
+        <div id="loader" class="loader hidden">
+            <div class="spinner"></div>
+            <p class="loading-text">Buscando en Amazon...</p>
+        </div>
+
+        <div id="resultContainer" class="result-container hidden">
+            <div id="resultCard" class="result-card">
+                <h2 id="resultTitle" class="result-title"></h2>
+                <p id="resultMessage" class="result-message"></p>
+                
+                <div class="product-info">
+                    <h3 class="neon-text-small">Información del Producto</h3>
+                    <div class="info-row">
+                        <span>Nombre:</span>
+                        <span id="productName" class="info-value">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Precio:</span>
+                        <span id="productPrice" class="info-value price">$0.00</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Tipo de Cuenta:</span>
+                        <span id="accountTypeDisplay" class="info-value">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Nacionalidad:</span>
+                        <span id="nationalityDisplay" class="info-value">-</span>
+                    </div>
+                </div>
+
+                <button id="closeBtn" class="neon-button small">
+                    <span class="btn-text">CERRAR</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
