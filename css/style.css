@@ -1,48 +1,135 @@
+/* Fondo animado */
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(270deg, #002f4b, #005f6b);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  background: linear-gradient(-45deg, #002f4b, #005f6b, #007c91, #00bcd4);
+  background-size: 600% 600%;
+  animation: fondo 15s ease infinite;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50% }
-  50% { background-position: 100% 50% }
-  100% { background-position: 0% 50% }
+/* Animación del fondo */
+@keyframes fondo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
+/* Contenedor principal */
 .container {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(10px);
-  color: white;
+  padding: 30px;
+  border-radius: 16px;
   width: 90%;
-  max-width: 350px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  max-width: 400px;
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  animation: entradaSuave 0.8s ease;
 }
 
-input, select, button {
-  display: block;
+/* Efecto de entrada */
+@keyframes entradaSuave {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Título */
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+/* Inputs y selects */
+input, select {
   width: 100%;
-  margin: 10px 0;
   padding: 12px;
-  border: none;
-  border-radius: 6px;
+  margin: 10px 0;
+  border: 2px solid #00bcd4;
+  border-radius: 8px;
+  background: transparent;
+  color: #ffffff;
   font-size: 16px;
+  transition: all 0.3s ease;
 }
 
+input:focus, select:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 10px #00ffff;
+  outline: none;
+}
+
+/* Botón de envío */
 button {
+  position: relative;
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
   background-color: #00bcd4;
   color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background-color: #0097a7;
+}
+
+/* Efecto ripple en botón */
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 0;
+  background: rgba(255, 255, 255, 0.3);
+  transition: width 0.5s ease;
+  z-index: 0;
+}
+
+button:hover::after {
+  width: 120%;
+}
+
+/* Detección del sistema */
+#os-info {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 15px;
+  color: #aefaff;
+}
+
+/* Alerta de transacción */
+.alerta {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #00ffff;
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+  z-index: 9999;
+  animation: deslizar 0.4s ease;
+}
+
+/* Animación de aparición de alerta */
+@keyframes deslizar {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
