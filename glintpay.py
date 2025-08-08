@@ -37,6 +37,7 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtGui import QColor, QPalette, QIcon
 from PyQt5.QtCore import Qt
+import subprocess
 
 saldo_simulado = 1000.00  # Saldo inicial
 
@@ -79,7 +80,9 @@ class VentanaFactura(QWidget):
         ])
         recibo = QTextEdit()
         recibo.setReadOnly(True)
-        recibo.setText(f"""                      GLINTPAY
+        recibo.setText("Imprimida en la terminal")
+        subprocess.run(['clear'])
+        print(f"""                      GLINTPAY
                   RIF G-382688518
           ALFARE CORRELATION ENGINE, INC.
     GITHUB NORDWILLE, CC STREET VILLE P/B LOCAL
@@ -100,11 +103,11 @@ PRODUCTO (E)                      Bs. {monto}
 ----------------------------------------------
 SUBTIL                            Bs. {monto}
 ----------------------------------------------
-EXENTO                            Bs. {monto}
+EXENTO                            Bs. {iva}
 ----------------------------------------------
 BS                                Bs. {monto}
 ----------------------------------------------
-TOTAL                             Bs. {monto}
+TOTAL                             Bs. {total}
 MH                                  Z7C7022418""") #V: {banco}{cedula}{tipo_cuenta}{monto:.2f}{iva:.2f}{total:.2f}{saldo_restante:.2f}{referencia}{fecha}{mensaje}
         recibo.setStyleSheet("""
             QTextEdit {
