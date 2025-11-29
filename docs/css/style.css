@@ -1,18 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
 
 :root {
-    --neon-blue: #08f;
-    --neon-pink: #f0f;
-    --neon-purple: #90f;
-    --neon-green: #0f8;
-    --neon-yellow: #ff0;
-    --dark-bg: #111;
-    --darker-bg: #0a0a0a;
-    --card-bg: rgba(20, 20, 30, 0.8);
-    --text-color: #eee;
-    --error-color: #f44336;
-    --success-color: #4caf50;
-    --warning-color: #ff9800;
+    --bg-primary: #161b22;
+    --bg-secondary: #0d1117;
+    --bg-input: rgba(255, 255, 255, 0.03);
+    --bg-input-focus: rgba(46, 164, 79, 0.1);
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --text-muted: #484f58;
+    --accent-green: #2ea44f;
+    --accent-green-hover: #2c974b;
+    --shadow-color: rgba(0, 0, 0, 0.16);
 }
 
 * {
@@ -22,146 +20,98 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
-    color: var(--text-color);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    line-height: 1.6;
+    padding: 8px;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 360px;
     margin: 0 auto;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
+    padding: 12px;
 }
 
 .neon-text {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #fff;
-    text-shadow: 
-        0 0 5px var(--neon-blue),
-        0 0 10px var(--neon-blue),
-        0 0 20px var(--neon-blue),
-        0 0 40px var(--neon-purple);
-    margin-bottom: 10px;
-    letter-spacing: 3px;
-}
-
-.neon-text-small {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.2rem;
-    color: #fff;
-    text-shadow: 
-        0 0 2px var(--neon-blue),
-        0 0 5px var(--neon-blue);
-    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
 }
 
 .flicker {
-    animation: flicker 3s infinite alternate;
-}
-
-@keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        text-shadow:
-            0 0 5px var(--neon-blue),
-            0 0 10px var(--neon-blue),
-            0 0 20px var(--neon-blue),
-            0 0 40px var(--neon-purple);
-    }
-    20%, 24%, 55% {
-        text-shadow: none;
-    }
+    color: var(--accent-green);
 }
 
 .subtitle {
-    font-size: 1rem;
-    color: var(--neon-green);
-    letter-spacing: 2px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
 }
 
 .card {
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 
-        0 0 10px rgba(0, 136, 255, 0.3),
-        0 0 20px rgba(0, 68, 255, 0.2);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(0, 204, 255, 0.1);
-    margin-bottom: 20px;
-}
-
-.glow {
-    animation: glow 3s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        box-shadow: 
-            0 0 5px rgba(0, 136, 255, 0.3),
-            0 0 10px rgba(0, 68, 255, 0.2);
-    }
-    to {
-        box-shadow: 
-            0 0 10px rgba(0, 136, 255, 0.5),
-            0 0 20px rgba(0, 68, 255, 0.3),
-            0 0 30px rgba(0, 34, 255, 0.2);
-    }
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 16px var(--shadow-color);
+    border: none;
+    margin-bottom: 12px;
 }
 
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 12px;
 }
 
 .neon-label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 500;
-    color: var(--neon-green);
-    text-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
-    letter-spacing: 1px;
+    color: var(--text-primary);
+    font-size: 12px;
 }
 
 .neon-input {
     width: 100%;
-    padding: 12px 15px;
-    background: rgba(10, 20, 30, 0.7);
-    border: 1px solid rgba(0, 204, 255, 0.3);
-    border-radius: 8px;
-    color: var(--text-color);
-    font-size: 16px;
-    transition: all 0.3s;
-    box-shadow: 0 0 10px rgba(0, 136, 255, 0.1);
+    padding: 10px;
+    background-color: var(--bg-input);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 13px;
+    transition: background-color 0.2s;
+    font-family: inherit;
 }
 
 .neon-input:focus {
     outline: none;
-    border-color: var(--neon-blue);
-    box-shadow: 
-        0 0 10px rgba(0, 136, 255, 0.3),
-        0 0 20px rgba(0, 68, 255, 0.2);
+    background-color: var(--bg-input-focus);
+}
+
+.neon-input::placeholder {
+    color: var(--text-muted);
 }
 
 .radio-group {
-    margin-bottom: 25px;
+    margin-bottom: 12px;
 }
 
 .radio-options {
     display: flex;
-    gap: 15px;
-    margin-top: 10px;
+    gap: 8px;
+    margin-top: 6px;
 }
 
 .radio-neon {
@@ -176,51 +126,46 @@ body {
 
 .radio-neon span {
     display: block;
-    padding: 12px 15px;
-    background: rgba(10, 20, 30, 0.7);
-    border: 1px solid rgba(0, 204, 255, 0.3);
-    border-radius: 8px;
+    padding: 10px;
+    background-color: var(--bg-input);
+    border: none;
+    border-radius: 4px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s;
-    color: var(--text-color);
-    box-shadow: 0 0 10px rgba(0, 136, 255, 0.1);
+    transition: background-color 0.2s;
+    color: var(--text-primary);
+    font-size: 13px;
 }
 
 .radio-neon input:checked + span {
-    background: rgba(0, 68, 255, 0.2);
-    border-color: var(--neon-blue);
-    color: var(--neon-green);
-    box-shadow: 
-        0 0 10px rgba(0, 136, 255, 0.3),
-        0 0 20px rgba(0, 68, 255, 0.2);
-    text-shadow: 0 0 5px rgba(0, 255, 170, 0.5);
+    background-color: var(--bg-input-focus);
+    color: var(--accent-green);
+}
+
+.radio-neon span:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .neon-button {
     position: relative;
     width: 100%;
-    padding: 15px;
-    background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+    padding: 0 16px;
+    height: 32px;
+    background-color: var(--accent-green);
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     color: white;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: bold;
     cursor: pointer;
-    overflow: hidden;
-    transition: all 0.3s;
-    box-shadow: 
-        0 0 10px rgba(0, 136, 255, 0.5),
-        0 0 20px rgba(0, 68, 255, 0.3);
-    margin-top: 10px;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+    font-family: inherit;
 }
 
 .neon-button.small {
-    padding: 10px 15px;
-    font-size: 14px;
-    max-width: 150px;
-    margin: 20px auto 0;
+    max-width: 120px;
+    margin: 12px auto 0;
 }
 
 .neon-button .btn-text {
@@ -229,46 +174,21 @@ body {
 }
 
 .neon-button .btn-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        to bottom right,
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0)
-    );
-    transform: rotate(30deg);
-    transition: all 0.5s;
-    opacity: 0;
+    display: none;
 }
 
 .neon-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-        0 0 15px rgba(0, 136, 255, 0.7),
-        0 0 30px rgba(0, 68, 255, 0.5);
+    background-color: var(--accent-green-hover);
 }
 
-.neon-button:hover .btn-glow {
-    opacity: 1;
-    animation: shine 1.5s infinite;
-}
-
-@keyframes shine {
-    0% {
-        transform: rotate(30deg) translate(-10%, -10%);
-    }
-    100% {
-        transform: rotate(30deg) translate(10%, 10%);
-    }
+.neon-button:active {
+    transform: translateY(1px);
 }
 
 .loader {
     text-align: center;
-    margin: 30px 0;
-    display: none;
+    margin: 20px 0;
+    padding: 20px;
 }
 
 .loader.hidden {
@@ -276,12 +196,12 @@ body {
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(0, 204, 255, 0.2);
-    border-top-color: var(--neon-blue);
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    border-top-color: var(--accent-green);
     border-radius: 50%;
-    margin: 0 auto 15px;
+    margin: 0 auto 12px;
     animation: spin 1s linear infinite;
 }
 
@@ -292,9 +212,8 @@ body {
 }
 
 .loading-text {
-    color: var(--neon-green);
-    text-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
-    font-size: 14px;
+    color: var(--text-secondary);
+    font-size: 11px;
 }
 
 .result-container {
@@ -311,7 +230,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s;
-    backdrop-filter: blur(5px);
+    padding: 8px;
 }
 
 .result-container.show {
@@ -320,47 +239,54 @@ body {
 }
 
 .result-card {
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 30px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 
-        0 0 20px rgba(0, 136, 255, 0.5),
-        0 0 40px rgba(0, 68, 255, 0.3);
-    border: 1px solid rgba(0, 204, 255, 0.3);
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 4px 16px var(--shadow-color);
+    border: none;
     text-align: center;
     position: relative;
-    animation: fadeInUp 0.5s;
+    animation: fadeInUp 0.3s;
 }
 
 .result-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
 }
 
 .result-message {
-    margin-bottom: 25px;
-    font-size: 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
     line-height: 1.5;
+    color: var(--text-secondary);
 }
 
 .product-info {
-    background: rgba(10, 20, 30, 0.5);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 204, 255, 0.2);
+    background-color: var(--bg-input);
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: none;
+}
+
+.neon-text-small {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: var(--text-primary);
 }
 
 .info-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed rgba(0, 204, 255, 0.2);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 12px;
 }
 
 .info-row:last-child {
@@ -369,37 +295,38 @@ body {
     padding-bottom: 0;
 }
 
+.info-row span:first-child {
+    color: var(--text-secondary);
+}
+
 .info-value {
-    color: var(--neon-green);
+    color: var(--text-primary);
     text-align: right;
+    font-weight: 500;
 }
 
 .price {
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--neon-yellow) !important;
-    text-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--accent-green) !important;
 }
 
 .success {
-    color: var(--success-color);
-    text-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+    color: var(--accent-green);
 }
 
 .error {
-    color: var(--error-color);
-    text-shadow: 0 0 5px rgba(244, 67, 54, 0.3);
+    color: #ff5f56;
 }
 
 .warning {
-    color: var(--warning-color);
-    text-shadow: 0 0 5px rgba(255, 152, 0, 0.3);
+    color: #ffbd2e;
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -409,4 +336,19 @@ body {
 
 .hidden {
     display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .container {
+        max-width: 100%;
+    }
+    
+    .card {
+        padding: 16px;
+    }
+    
+    .header {
+        padding: 8px;
+    }
 }
