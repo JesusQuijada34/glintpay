@@ -1,1 +1,11 @@
-<app><publisher>influent</publisher><app>glintpay</app><name>GlintPay | Banco QT5/QSS Simulado</name><version>v2-25.08-13.46-danenone</version><with>linux</with><danenone>25.08-13.46</danenone><correlationid>84d9b8a4a0a9ee677e4861192438f653ca3d3f89e39dd4bb2d1ea2e8c8300eb1</correlationid><rate>Todas las edades</rate></app>
+<?xml version="1.0" ?>
+<app>
+  <publisher>influent</publisher>
+  <app>glintpay</app>
+  <name>GlintPay | Banco QT5/QSS Simulado</name>
+  <version>v2-25.08-13.46</version>
+  <author>JesusQuijada34</author>
+  <platform>AlphaCube</platform>
+  <correlationid>39357aedfd4ebe9bc9dc2c6681ab073be31c2358552bc78ab47ade7d68c65b19</correlationid>
+  <rate>PERSONAL USE</rate>
+</app>
